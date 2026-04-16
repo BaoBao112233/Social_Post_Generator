@@ -59,6 +59,56 @@
 
 ---
 
+### 2.1. Quy định BẮT BUỘC về Text trên Poster
+
+> ⚠️ **Lưu ý quan trọng:** Quy định này CHỈ áp dụng cho text marketing trên poster (headline, slogan, mô tả sản phẩm, v.v.). **KHÔNG áp dụng cho label trên sản phẩm** — label vẫn phải giữ nguyên 100% như ảnh gốc (xem Section 1).
+
+Mọi text trên poster (ngoài sản phẩm) **BẮT BUỘC** tuân thủ chính xác các thông số sau:
+
+| Thuộc tính | Giá trị bắt buộc | Ghi chú |
+|---|---|---|
+| **Font family** | `Pretendard` | KHÔNG dùng font khác, KHÔNG dùng fallback font |
+| **Font weight** | `Light` (300) | KHÔNG dùng Regular, Medium, Bold, SemiBold, v.v. |
+| **Letter-spacing (tracking)** | `-45` (tương đương `-0.045em` trong CSS) | KHÔNG dùng giá trị khác |
+| **Màu chữ** | Linh hoạt theo background | Đảm bảo contrast tốt để đọc được |
+
+#### ✅ CHO PHÉP:
+- Chọn **màu chữ** phù hợp với background (trắng trên nền tối, đen trên nền sáng, hoặc màu brand)
+- Thay đổi **kích thước chữ** (font-size) tùy layout
+- Thay đổi **vị trí text** trên poster
+
+#### ❌ TUYỆT ĐỐI KHÔNG:
+- KHÔNG dùng bất kỳ font nào khác ngoài Pretendard
+- KHÔNG dùng weight khác ngoài Light (300)
+- KHÔNG dùng tracking khác ngoài -45
+- KHÔNG in nghiêng (italic), gạch chân (underline), gạch ngang (strikethrough)
+- KHÔNG dùng text shadow, text outline, gradient text, hoặc bất kỳ hiệu ứng text nào khác
+- KHÔNG dùng text uppercase/lowercase transform (viết chữ theo đúng case được yêu cầu)
+
+#### 📝 Về nội dung text:
+- Ngắn gọn — chỉ vài từ (few words)
+- Nói về sản phẩm (công dụng, điểm nổi bật, tên sản phẩm)
+- Không được lặp lại hoặc thay thế label sản phẩm
+
+#### 💻 Ví dụ CSS (tham khảo):
+```css
+.poster-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300; /* Light */
+  letter-spacing: -0.045em; /* tracking -45 */
+  color: #FFFFFF; /* hoặc #000000, hoặc màu brand tùy background */
+}
+```
+
+#### 🎨 Hướng dẫn chọn màu chữ theo background:
+| Background | Màu chữ gợi ý |
+|---|---|
+| Nền tối (đen, nâu đậm, xanh đậm) | Trắng `#FFFFFF` hoặc trắng ngà `#F5F5F0` |
+| Nền sáng (trắng, be, pastel) | Đen `#000000` hoặc xám đậm `#1A1A1A` |
+| Nền màu brand | Màu contrast cao với brand color |
+
+---
+
 ### 3. Quy trình bắt buộc trước khi tạo banner
 
 Claude Code **PHẢI** thực hiện các bước sau theo thứ tự:
@@ -73,6 +123,7 @@ BƯỚC 2: Phân tích kỹ ảnh gốc:
 BƯỚC 3: Tách sản phẩm ra khỏi background gốc (nếu cần)
         → KHÔNG retouch vào sản phẩm khi tách
 BƯỚC 4: Tạo background mới + layout marketing
+        + Thêm text poster (theo Section 2.1 — Pretendard / Light / tracking -45)
 BƯỚC 5: Đặt ảnh sản phẩm GỐC (không qua AI regenerate) vào layout
 BƯỚC 6: So sánh banner cuối với ảnh gốc:
         - Label có bị thay đổi không?
@@ -80,6 +131,7 @@ BƯỚC 6: So sánh banner cuối với ảnh gốc:
         - Hình dáng có bị méo không?
         - Logo có bị che/đổi không?
         - Tỷ lệ có đúng không?
+        - Text poster có đúng Pretendard/Light/tracking -45 không?
 BƯỚC 7: Nếu bất kỳ điểm nào ở BƯỚC 6 sai → LÀM LẠI
 ```
 
@@ -96,6 +148,10 @@ Trước khi xuất file cuối cùng, Claude Code **BẮT BUỘC** trả lời 
 - [ ] Tỷ lệ sản phẩm đúng với ảnh gốc?
 - [ ] Không có element marketing nào đè lên label/logo?
 - [ ] Ảnh sản phẩm KHÔNG phải do AI tái tạo?
+- [ ] Text poster dùng font Pretendard?
+- [ ] Text poster dùng weight Light (300)?
+- [ ] Text poster có tracking = -45 (letter-spacing -0.045em)?
+- [ ] Text poster KHÔNG có italic, underline, shadow, hay hiệu ứng khác?
 
 **Nếu có BẤT KỲ câu nào trả lời "KHÔNG" → DỪNG LẠI, làm lại từ đầu.**
 
@@ -165,6 +221,56 @@ The original product image is brand property. When processing product images, Cl
 
 ---
 
+### 2.1. MANDATORY Poster Text Specifications
+
+> ⚠️ **Important note:** These rules apply ONLY to marketing text on the poster (headline, slogan, product description, etc.). **They do NOT apply to labels on the product itself** — the product label must remain 100% identical to the original (see Section 1).
+
+All text on the poster (outside the product) **MUST** strictly follow these exact specifications:
+
+| Property | Required Value | Notes |
+|---|---|---|
+| **Font family** | `Pretendard` | NO other fonts, NO fallback fonts |
+| **Font weight** | `Light` (300) | NO Regular, Medium, Bold, SemiBold, etc. |
+| **Letter-spacing (tracking)** | `-45` (equivalent to `-0.045em` in CSS) | NO other values |
+| **Text color** | Flexible based on background | Ensure good contrast for readability |
+
+#### ✅ ALLOWED:
+- Choose **text color** suited to the background (white on dark, black on light, or brand color)
+- Change **font-size** to fit the layout
+- Change **text position** on the poster
+
+#### ❌ STRICTLY FORBIDDEN:
+- Do NOT use any font other than Pretendard
+- Do NOT use any weight other than Light (300)
+- Do NOT use any tracking other than -45
+- Do NOT use italic, underline, or strikethrough
+- Do NOT use text shadow, text outline, gradient text, or any other text effects
+- Do NOT use text-transform uppercase/lowercase (write text in the exact case required)
+
+#### 📝 Content guidelines:
+- Keep it short — just a few words
+- Describe the product (benefits, key features, product name)
+- Must NOT repeat or replace the product label
+
+#### 💻 CSS example (reference):
+```css
+.poster-text {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 300; /* Light */
+  letter-spacing: -0.045em; /* tracking -45 */
+  color: #FFFFFF; /* or #000000, or brand color based on background */
+}
+```
+
+#### 🎨 Color selection guide by background:
+| Background | Suggested text color |
+|---|---|
+| Dark (black, dark brown, dark blue) | White `#FFFFFF` or off-white `#F5F5F0` |
+| Light (white, beige, pastel) | Black `#000000` or dark gray `#1A1A1A` |
+| Brand color background | High-contrast color against the brand color |
+
+---
+
 ### 3. Mandatory workflow before creating a banner
 
 Claude Code **MUST** follow these steps in order:
@@ -179,6 +285,7 @@ STEP 2: Analyze the original carefully:
 STEP 3: Extract product from original background (if needed)
         → DO NOT retouch the product during extraction
 STEP 4: Create new background + marketing layout
+        + Add poster text (per Section 2.1 — Pretendard / Light / tracking -45)
 STEP 5: Place the ORIGINAL product image (not AI-regenerated) into the layout
 STEP 6: Compare final banner with the original:
         - Is the label unchanged?
@@ -186,6 +293,7 @@ STEP 6: Compare final banner with the original:
         - Is the shape undistorted?
         - Is the logo intact?
         - Are proportions correct?
+        - Does poster text use Pretendard/Light/tracking -45?
 STEP 7: If ANY point in STEP 6 fails → REDO
 ```
 
@@ -202,6 +310,10 @@ Before exporting the final file, Claude Code **MUST** answer "YES" to every ques
 - [ ] Is the product proportion correct vs original?
 - [ ] No marketing element overlapping the label/logo?
 - [ ] Is the product image NOT AI-regenerated?
+- [ ] Does poster text use the Pretendard font?
+- [ ] Does poster text use Light weight (300)?
+- [ ] Does poster text have tracking = -45 (letter-spacing -0.045em)?
+- [ ] Is poster text free of italic, underline, shadow, or other effects?
 
 **If ANY answer is "NO" → STOP and redo from scratch.**
 
